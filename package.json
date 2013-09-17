@@ -1,0 +1,23 @@
+{
+	"name": "gear",
+	"description": "Virtual music gear using Web Audio",
+	"version": "0.0.1",
+	"main": "src/gear.js",
+	"homepage": "https://github.com/sole/gear",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/sole/gear.git"
+	},
+	"bugs": {
+		"url": "https://github.com/sole/gear/issues"
+	},
+	"licenses": [
+	{
+		"type": "GPL",
+		"url": "https://github.com/sole/gear/blob/master/LICENSE"
+	}
+	],
+	"keywords": [
+		"web audio, music"
+	]
+}
