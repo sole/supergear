@@ -1,4 +1,4 @@
-var EventDispatcher = require('EventDispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 
 function Reverbetron(audioContext) {
 

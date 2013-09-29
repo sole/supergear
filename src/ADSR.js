@@ -1,4 +1,4 @@
-var EventDispatcher = require('EventDispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 
 function ADSR(audioContext, param, attack, decay, sustain, release) {
 

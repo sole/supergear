@@ -1,5 +1,5 @@
 var SampleVoice = require('./SampleVoice');
-var EventDispatcher = require('EventDispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 
 function generateWhiteNoise(size) {
 

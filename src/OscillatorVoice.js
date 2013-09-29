@@ -1,5 +1,5 @@
 var MIDIUtils = require('midiutils');
-var EventDispatcher = require('EventDispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 
 function OscillatorVoice(context, options) {
 

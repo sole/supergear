@@ -1,4 +1,4 @@
-var EventDispatcher = require('eventdispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 
 // A simple mixer for avoiding early deafness
 function Mixer(audioContext) {
@@ -7,8 +7,8 @@ function Mixer(audioContext) {
 	var output = audioContext.createGain();
 	var faders = [];
 	var numFaders = 8;
-
-	EventDispatcher.call(this);
+	
+    EventDispatcher.call(this);
 
 	initFaders();
 

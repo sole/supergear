@@ -1,4 +1,4 @@
-var EventDispatcher = require('EventDispatcher');
+var EventDispatcher = require('eventdispatcher.js');
 var OscillatorVoice = require('./OscillatorVoice');
 var NoiseGenerator = require('./NoiseGenerator');
 var ArithmeticMixer = require('./ArithmeticMixer');
