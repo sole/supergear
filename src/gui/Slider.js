@@ -1,3 +1,5 @@
+var StringFormat = require('stringformat.js');
+
 var template = '<label><span class="label"></span> <input type="range" min="0" max="100" step="0.0001" /> <span class="valueDisplay">0</span></label>';
 
 function register() {
@@ -46,7 +48,7 @@ function register() {
 					if(v !== null) {
 						this.setAttribute('value', v);
 						this.slider.value = v;
-						this.valueDisplay.innerHTML = this.slider.value;
+						this.valueDisplay.innerHTML = StringFormat.toFixed(this.slider.value, 2); // TODO make this value configurable
 					}
 				},
 				get: function() {
