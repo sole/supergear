@@ -1,7 +1,7 @@
 {
 	"name": "supergear",
 	"description": "Sole's super web audio gear",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "src/main.js",
 	"homepage": "https://github.com/sole/supergear",
 	"repository": {
