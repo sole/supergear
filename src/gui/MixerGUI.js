@@ -47,7 +47,9 @@ function register() {
 				// Channel sliders/faders
 				this.slidersContainer.innerHTML = '';
 				var faders = mixer.faders;
-				var peaks = [];
+				var peakContexts = [];
+				var peakWidth = 50;
+				var peakHeight = 5;
 
 				faders.forEach(function(fader, index) {
 					var slider = document.createElement('gear-slider');
@@ -68,23 +70,32 @@ function register() {
 						fader.gain = slider.value * 1.0;
 					}, false);
 
-					var peak = document.createElement('span');
-					peaks.push(peak);
+					var peakCanvas = document.createElement('canvas');
+					peakCanvas.width = peakWidth;
+					peakCanvas.height = peakHeight;
+					var peakContext = peakCanvas.getContext('2d');
+					peakContexts.push(peakContext);
 
 					var div = document.createElement('div');
 					that.slidersContainer.appendChild(div);
 
 					div.appendChild(slider);
-					div.appendChild(peak);
+					div.appendChild(peakCanvas);
 				});
 
 				function updatePeaks() {
 					that.updatePeaksAnimationId = requestAnimationFrame(updatePeaks);
 
 					for(var i = 0; i < faders.length; i++) {
-						var peak = peaks[i];
+						var ctx = peakContexts[i];
 						var fader = faders[i];
-						peak.innerHTML = fader.peak + ' d';
+						//peak.innerHTML = fader.peak + ' d';
+
+						ctx.fillStyle = 'rgb(33, 33, 33)';
+						ctx.fillRect(0, 0, peakWidth, peakHeight);
+
+						ctx.fillStyle = 'rgb(255, 0, 0)';
+						ctx.fillRect(0, 0, fader.peak * peakWidth, peakHeight);
 					}
 				}
 
