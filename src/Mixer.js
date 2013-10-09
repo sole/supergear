@@ -65,10 +65,18 @@ function Mixer(audioContext) {
 
 function Fader(audioContext, options) {
 
+	var that = this;
 	var compressor = audioContext.createDynamicsCompressor();
 	var gain = audioContext.createGain();
+	
+	var analyser = audioContext.createAnalyser();
+	analyser.fftSize = 32;
+
+	var bufferLength = analyser.frequencyBinCount;
+	var analyserArray = new Uint8Array(bufferLength);
+
 	var label = 'fader';
-	var that = this;
+
 
 	EventDispatcher.call(this);
 
@@ -90,10 +98,18 @@ function Fader(audioContext, options) {
 				label = v;
 				that.dispatchEvent({ type: 'label_change', label: v });
 			}
+		},
+		peak: {
+			get: function() {
+				analyser.getByteFrequencyData(analyserArray);
+				return (analyserArray[0] / 256.0);
+			}
 		}
 	});
 
 	compressor.connect(gain);
+	// Measuring before gain is applied-so we can keep track of what is in the channel even if muted
+	compressor.connect(analyser); // TODO optional
 
 	// ~~~
 	

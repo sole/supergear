@@ -21,6 +21,8 @@ function register() {
 
 				this.slidersContainer = this.querySelector('.sliders');
 				this.sliders = [];
+
+				this.updatePeaksAnimationId = null;
 			}
 		},
 		
@@ -45,6 +47,7 @@ function register() {
 				// Channel sliders/faders
 				this.slidersContainer.innerHTML = '';
 				var faders = mixer.faders;
+				var peaks = [];
 
 				faders.forEach(function(fader, index) {
 					var slider = document.createElement('gear-slider');
@@ -65,15 +68,33 @@ function register() {
 						fader.gain = slider.value * 1.0;
 					}, false);
 
-					that.slidersContainer.appendChild(slider);
-					that.slidersContainer.appendChild(document.createElement('br'));
+					var peak = document.createElement('span');
+					peaks.push(peak);
+
+					var div = document.createElement('div');
+					that.slidersContainer.appendChild(div);
+
+					div.appendChild(slider);
+					div.appendChild(peak);
 				});
 
+				function updatePeaks() {
+					that.updatePeaksAnimationId = requestAnimationFrame(updatePeaks);
+
+					for(var i = 0; i < faders.length; i++) {
+						var peak = peaks[i];
+						var fader = faders[i];
+						peak.innerHTML = fader.peak + ' d';
+					}
+				}
+
+				updatePeaks();
 
 			},
 
 			detach: function() {
 				console.error('detach not implemented');
+				cancelAnimationFrame(that.updatePeaksAnimationId);
 			}
 
 		}

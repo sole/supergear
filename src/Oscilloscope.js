@@ -24,8 +24,6 @@ function Oscilloscope(audioContext, options) {
 	var bufferLength = analyser.frequencyBinCount;
 	var timeDomainArray = new Uint8Array(bufferLength);
 
-	console.log('buffer length oscilloscope', bufferLength);
-
 	update();
 
 	//
@@ -34,7 +32,7 @@ function Oscilloscope(audioContext, options) {
 
 		requestAnimationFrame(update);
 
-		analyser.getByteTimeDomainData(timeDomainArray);
+		analyser.getByteFrequencyData(timeDomainArray);
 
 		ctx.fillStyle = 'rgb(0, 0, 0)';
 		ctx.fillRect(0, 0, canvasWidth, canvasHeight);
