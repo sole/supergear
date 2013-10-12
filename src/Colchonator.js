@@ -171,7 +171,7 @@ function Colchonator(audioContext, options) {
 
 	function getVoiceByNote(noteNumber) {
 		var index = getVoiceIndexByNote(noteNumber);
-		if(index !== -1) {
+		if(index !== -1 && voices[index] !== undefined) {
 			return voices[index].voice;
 		}
 	}
