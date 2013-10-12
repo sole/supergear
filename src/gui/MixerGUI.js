@@ -89,7 +89,6 @@ function register() {
 					for(var i = 0; i < faders.length; i++) {
 						var ctx = peakContexts[i];
 						var fader = faders[i];
-						//peak.innerHTML = fader.peak + ' d';
 
 						ctx.fillStyle = 'rgb(33, 33, 33)';
 						ctx.fillRect(0, 0, peakWidth, peakHeight);
