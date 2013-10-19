@@ -2,6 +2,10 @@
 	"name": "supergear",
 	"description": "Sole's super web audio gear",
 	"version": "0.0.2",
+    "dependencies": {
+        "midiutils": "0.0.2",
+        "eventdispatcher.js": "0.0.2"
+    },
 	"main": "src/main.js",
 	"homepage": "https://github.com/sole/supergear",
 	"repository": {
