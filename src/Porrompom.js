@@ -1,6 +1,6 @@
 var BufferLoader = require('./BufferLoader');
 var SampleVoice = require('./SampleVoice');
-var MIDIUtils = require('MIDIUtils');
+var MIDIUtils = require('midiutils');
 
 function Porrompom(audioContext, options) {
 
