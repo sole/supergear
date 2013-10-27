@@ -92,7 +92,6 @@ function Bajotron(audioContext, options) {
 		setNoiseAmount(options.noiseAmount !== undefined ? options.noiseAmount : 0.0);
 		if(options.noise) {
 			for(var k in options.noise) {
-				console.log('set noise opt', k, options.noise[k]);
 				noiseGenerator.k = options.noise[k];
 			}
 		}
@@ -169,16 +168,12 @@ function Bajotron(audioContext, options) {
 
 
 	function removeVoiceListeners(voice) {
-		console.log('remove listeners for', voice);
 		if(voice.__bajotronListeners) {
-			console.log('has listeners', voice.__bajotronListeners.length);
 			voice.__bajotronListeners.forEach(function(listener) {
 				voice.removeEventListener(listener.name, listener.callback);
 			});
-		} else {
-			console.log('no listeners');
 		}
-	}
+    }
 
 
 	function dispatchVoiceChangeEvent(eventName, voiceIndex) {
